@@ -7,7 +7,7 @@
   "author": "them.es",
   "repository": {
     "type": "git",
-    "url": "git://github.com/them-es/themes-starter.git"
+    "url": "git://github.com/littsmix/startup.git"
   },
   "scripts": {
     "watch": "grunt watch"

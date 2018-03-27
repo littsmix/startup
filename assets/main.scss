@@ -54,6 +54,19 @@ $font-family-base:        $font-family-sans-serif !default;
  */
 
  @import "../node_modules/bootstrap/scss/bootstrap";
+ // Core variables and mixins
+ @import "sass/variables.scss";
+ @import "sass/mixins.scss";
+ // Global CSS
+ @import "sass/global.scss";
+ // Components
+ @import "sass/masthead.scss";
+ @import "sass/showcase.scss";
+ @import "sass/icons.scss";
+ @import "sass/testimonials.scss";
+ @import "sass/call-to-action.scss";
+ @import "sass/footer.scss";
+
 
 
 /**
@@ -74,22 +87,22 @@ img {
 
 /* If WP-Adminbar is visible */
 body.admin-bar {
-	
+
 	#header.fixed-top {
 		top: 32px;
 	}
-	
+
 	.edit-link a {
 		color: #FFF !important;
 		font-weight: normal !important;
 		text-decoration: none !important;
-		
+
 		&::before {
 			content: '\270E';
 			display: inline-block;
 			margin-right: 5px;
 		}
-		
+
 	}
 }
 
@@ -106,11 +119,11 @@ body.admin-bar {
 /* Header */
 
 .navbar-brand {
-	
+
 	img {
 		height: 40px;
 	}
-	
+
 }
 
 .navbar-static-top {
@@ -143,26 +156,26 @@ body.admin-bar {
 			}
 		}
 	}
-	
+
 }
 
 
 /* Sidebar */
 
 .widget-area {
-	
+
 	ul {
 		list-style: none;
 		padding: 0;
 	}
-	
+
 }
 
 
 /* Author */
 
 .author-avatar {
-	
+
 	.avatar {
 		width: 64px;
 		height: auto;
@@ -175,7 +188,7 @@ body.admin-bar {
 	h2, h3 {
 		margin-top: 0;
 	}
-	
+
 }
 
 
@@ -216,7 +229,7 @@ body.admin-bar {
 	list-style: none;
 	margin: 0 auto;
 	width: 68.9%;
-		
+
 	> li.comment {
 		margin: 0 0 1.625em;
 		padding: 1.625em;
@@ -244,7 +257,7 @@ body.admin-bar {
 		top: 0;
 		left: -102px;
 	}
-	
+
 }
 
 
@@ -253,9 +266,9 @@ body.admin-bar {
  */
 
 @media (max-width: breakpoint-max(sm)) {
-	
+
 	#sidebar {
 		margin-top: 60px;
 	}
-	
+
 }
