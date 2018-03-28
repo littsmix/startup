@@ -1,33 +1,41 @@
 {
-  "name": "themes-starter",
-  "version": "2.0.0",
-  "license": "GPL-2.0",
-  "description": "A WordPress Starter Theme built with Bootstrap 4.",
-  "homepage": "http://them.es",
-  "author": "them.es",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/littsmix/startup.git"
+  "name": "startup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "test"
   },
   "scripts": {
-    "watch": "grunt watch"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/littsmix/startup.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/littsmix/startup/issues"
+  },
+  "homepage": "https://github.com/littsmix/startup#readme",
   "devDependencies": {
-    "bootstrap": ">=4.0.0",
-    "jquery": ">=3.0.0",
-    "popper.js": "^1.11.0",
-    "autoprefixer": "*",
-    "cssnano": "*",
-    "grunt": "*",
-    "grunt-browser-sync": "*",
-    "grunt-contrib-imagemin": "*",
-    "grunt-contrib-jshint": "*",
-    "grunt-contrib-uglify": "*",
-    "grunt-contrib-watch": "*",
-    "grunt-postcss": "*",
-    "grunt-sass": "*",
-    "load-grunt-tasks": "*",
-    "pixrem": "*"
+    "bootstrap": "^4.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.2.1",
+    "gulp-size": "^3.0.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-svgmin": "^1.2.4",
+    "gulp-uglify": "^3.0.0",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.1"
+  },
+  "dependencies": {
+    "owl.carousel": "^2.3.3"
   }
 }

@@ -15,7 +15,7 @@ $theme_version = '2.0';
 
 	/**
 	 * Include Support for wordpress.com-specific functions.
-	 * 
+	 *
 	 * @since v1.0
 	 */
 	$theme_wordpresscom = get_template_directory() . '/inc/wordpresscom.php';
@@ -240,7 +240,7 @@ $theme_version = '2.0';
 	if ( ! function_exists( 'startup_article_posted_on' ) ) :
 		/**
 		 * "Theme posted on" pattern
-		 * 
+		 *
 		 * @since v1.0
 		 */
 		function startup_article_posted_on() {
@@ -262,7 +262,7 @@ $theme_version = '2.0';
 
 	/**
 	 * Template for Password protected post form
-	 * 
+	 *
 	 * @since v1.0
 	 */
 	function startup_password_form() {
@@ -385,9 +385,9 @@ $theme_version = '2.0';
 			$req = get_option( 'require_name_email' );
 			$aria_req = ( $req ? " aria-required='true' required" : '' );
 			$fields = array(
-				'author' => '<div class="form-group"><label for="author">' . __( 'Name', 'startup' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label>' . 
+				'author' => '<div class="form-group"><label for="author">' . __( 'Name', 'startup' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label>' .
 							'<input type="text" id="author" name="author" class="form-control" value="' . esc_attr( $commenter['comment_author'] ) . '"' . $aria_req . ' /></div>',
-				'email'  => '<div class="form-group"><label for="email">' . __( 'Email', 'startup' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label>' . 
+				'email'  => '<div class="form-group"><label for="email">' . __( 'Email', 'startup' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label>' .
 							'<input type="email" id="email" name="email" class="form-control" value="' . esc_attr( $commenter['comment_author_email'] ) . '"' . $aria_req . ' /></div>',
 				'url'    => '',
 			);
@@ -457,15 +457,18 @@ $theme_version = '2.0';
 
 		// 1. Styles
 		wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css', false, $theme_version, 'all' );
+		wp_enqueue_style( 'simpleicons', get_template_directory_uri() . '/vendor/simple-line-icons/css/simple-line-icons.css', false );
+		wp_enqueue_style( 'owlcarousel-style', get_template_directory_uri() . '/node_modules/owl.carousel/dist/assets/owl.carousel.min.css', false );
 		// wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/node_modules/bootstrap/dist/css/bootstrap.min.css', false, $theme_version, 'all' );
 		wp_enqueue_style( 'main', get_template_directory_uri() . '/assets/css/main.min.css', false, $theme_version, 'all' ); // main.scss: Compiled Framework source + custom styles
-		
+
 		if ( is_rtl() ) {
 			wp_enqueue_style( 'rtl', get_template_directory_uri() . '/assets/css/rtl.min.css', false, $theme_version, 'all' );
 		}
 
 		// 2. Scripts
 		wp_enqueue_script( 'bootstrapjs', get_template_directory_uri() . '/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js', array( 'jquery' ), $theme_version, true );
+		wp_enqueue_script( 'owlcarousel-js', get_template_directory_uri() . '/node_modules/owl.carousel/dist/owl.carousel.min.js', array( 'jquery' ), false, true );
 		wp_enqueue_script( 'mainjs', get_template_directory_uri() . '/assets/js/main.min.js', false, $theme_version, true );
 
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -473,5 +476,6 @@ $theme_version = '2.0';
 		}
 	}
 	add_action( 'wp_enqueue_scripts', 'startup_scripts_loader' );
+
 
 ?>
