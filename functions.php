@@ -435,6 +435,13 @@ $theme_version = '2.0';
 		) );
 	}
 
+	// Add classes to li tag
+	function add_classes_on_li($classes, $item, $args) {
+	  $classes[] = 'list-inline-item';
+	  return $classes;
+	}
+	add_filter('nav_menu_css_class','add_classes_on_li',1,3);
+
 	// Custom Nav Walker: wp_bootstrap4_navwalker()
 	$custom_walker = get_template_directory() . '/inc/wp_bootstrap_navwalker.php';
 	if ( is_readable( $custom_walker ) ) {
@@ -458,6 +465,7 @@ $theme_version = '2.0';
 		// 1. Styles
 		wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css', false, $theme_version, 'all' );
 		wp_enqueue_style( 'simpleicons', get_template_directory_uri() . '/vendor/simple-line-icons/css/simple-line-icons.css', false );
+		wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/vendor/font-awesome/css/font-awesome.min.css', false );
 		wp_enqueue_style( 'owlcarousel-style', get_template_directory_uri() . '/node_modules/owl.carousel/dist/assets/owl.carousel.min.css', false );
 		// wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/node_modules/bootstrap/dist/css/bootstrap.min.css', false, $theme_version, 'all' );
 		wp_enqueue_style( 'main', get_template_directory_uri() . '/assets/css/main.min.css', false, $theme_version, 'all' ); // main.scss: Compiled Framework source + custom styles
@@ -477,5 +485,22 @@ $theme_version = '2.0';
 	}
 	add_action( 'wp_enqueue_scripts', 'startup_scripts_loader' );
 
+	// Allowing SVG Upload in WordPress.
+	function cc_mime_types( $mimes ){
+	$mimes['svg'] = 'image/svg+xml';
+	return $mimes;
+	}
+	add_filter( 'upload_mimes', 'cc_mime_types' );
+
+	// Add Options Page
+	if( function_exists('acf_add_options_page') ) {
+
+		acf_add_options_page();
+
+		acf_add_options_sub_page('CTA');
+		acf_add_options_sub_page('Header');
+		acf_add_options_sub_page('Social Media');
+
+	}
 
 ?>

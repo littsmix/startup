@@ -7,7 +7,7 @@
 ?>
 
 	<?php if ( have_posts() ) : ?>
-		
+
 		<header class="page-header">
 			<h1 class="page-title"><?php printf( __( 'Category Archives: %s', 'startup' ), '<span>' . single_cat_title( '', false ) . '</span>' ); ?></h1>
 			<?php

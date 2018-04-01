@@ -68,7 +68,7 @@ var concat = require('gulp-concat');
 gulp.task('default', function(){
 
 	// watch me getting Sassy
-	gulp.watch("./assets/*.scss", function(event){
+	gulp.watch(["./assets/*.scss", "./assets/sass/*.scss"], function(event){
 		gulp.run('sass');
 	});
 	// make my JavaScript ugly

@@ -1,20 +1,24 @@
 .features-icons {
-  padding-top: 7rem;
-  padding-bottom: 7rem;
-  .features-icons-item {
-    max-width: 20rem;
-    .features-icons-icon {
-      height: 7rem;
-      i {
-        font-size: 4.5rem;
+   padding-top: 7rem;
+   padding-bottom: 7rem;
+
+   .features-icons-item {
+      max-width: 20rem;
+
+      .features-icons-icon svg {
+         fill: $blue;
+         height: 5rem;
+         width: 5rem;
       }
-    }
-    &:hover {
-      .features-icons-icon {
-        i {
-          font-size: 5rem;
-        }
+
+      &:hover {
+         .features-icons-icon {
+            svg {
+               // height: 7rem;
+               // width: 7rem;
+               // transition: all 0.5s ease;
+            }
+         }
       }
-    }
-  }
+   }
 }

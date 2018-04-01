@@ -1,60 +1,84 @@
-	<?php
-		// If Single or Archive (Category, Tag, Author or a Date based page)
-		if ( is_single() || is_archive() ) :
-	?>
-			</div><!-- /.col -->
+<!-- Footer -->
+<footer class="footer bg-light">
+	<div class="container">
+	  <div class="row">
+	    <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
 
-			<?php get_sidebar(); ?>
+			<?php
+				if ( has_nav_menu( 'footer-menu' ) ) :
+					 // see function register_nav_menus() in
+					wp_nav_menu( array(
+						'theme_location'  => 'footer-menu',
+						'container'       => 'div',
+						'fallback_cb'     => '',
+						'items_wrap'      => '<ul class="list-inline mb-2">%3$s</ul>',
+						//'fallback_cb'    => 'WP_Bootstrap4_Navwalker_Footer::fallback',
+						'walker'          => new WP_Bootstrap4_Navwalker_Footer(),
+					) );
+				endif;
+			?>
+			<!-- <li class="list-inline-item">&sdot;</li> -->
 
-		</div><!-- /.row -->
-	<?php
-		endif;
-	?>
+	      <p class="text-muted small mb-4 mb-lg-0">&copy; <?php echo date( 'Y' ); ?> <?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?></p>
+	    </div>
 
-	</main><!-- /#main -->
+	    <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+	      <ul class="list-inline mb-0">
+	        <li class="list-inline-item mr-3">
+				  	<?php $fb = get_field('facebook', 'option'); if( $fb ): ?>
 
-	<footer id="footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6">
-					<p>&copy; <?php echo date( 'Y' ); ?> <?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?></p>
-				</div>
-				
-				<?php
-					if ( has_nav_menu( 'footer-menu' ) ) : // see function register_nav_menus() in functions.php
-						/*
-							Loading WordPress Custom Menu (theme_location) ... remove <div> <ul> containers and show only <li> items!!!
-							Menu name taken from functions.php!!! ... register_nav_menu( 'footer-menu', 'Footer Menu' );
-							!!! IMPORTANT: After adding all pages to the menu, don't forget to assign this menu to the Footer menu of "Theme locations" /wp-admin/nav-menus.php (on left side) ... Otherwise the themes will not know, which menu to use!!!
-						*/
-						wp_nav_menu( array(
-							'theme_location'  => 'footer-menu',
-							'container'       => 'nav',
-							'container_class' => 'col-md-6',
-							'fallback_cb'     => '',
-							'items_wrap'      => '<ul class="menu nav justify-content-end">%3$s</ul>',
-							//'fallback_cb'    => 'WP_Bootstrap4_Navwalker_Footer::fallback',
-							'walker'          => new WP_Bootstrap4_Navwalker_Footer(),
-						) );
-					endif;
-				?>
+						<a href="<?php echo $fb['url']; ?>" target="<?php echo $fb['target']; ?>"> <i class="fa fa-facebook fa-2x fa-fw"></i></a>
 
-				<?php if ( is_active_sidebar( 'third_widget_area' ) ) : ?>
-					<div class="col-md-12">
-						<?php dynamic_sidebar( 'third_widget_area' ); ?>
+					<?php endif; ?>
+	        </li>
+	        <li class="list-inline-item mr-3">
+				  	<?php $tweet = get_field('twitter', 'option'); if( $tweet ): ?>
 
-						<?php if ( current_user_can( 'manage_options' ) ) : ?>
-							<p class="edit-link"><a href="<?php echo admin_url( 'widgets.php' ); ?>" class="badge badge-info"><?php _e( 'Edit', 'startup' ); ?></a></p><!-- Show Edit Widget link -->
-						<?php endif; ?>
-					</div>
-				<?php endif; ?>
-			</div><!-- /.row -->
-		</div><!-- /.container -->
-	</footer><!-- /#footer -->
-	
-</div><!-- /#wrapper -->
+						<a href="<?php echo $tweet['url']; ?>" target="<?php echo $tweet['target']; ?>"> <i class="fa fa-twitter fa-2x fa-fw"></i></a>
+
+					<?php endif; ?>
+	        </li>
+	        <li class="list-inline-item">
+					<?php $insta = get_field('instagram', 'option'); if( $insta ): ?>
+
+					 <a href="<?php echo $insta['url']; ?>" target="<?php echo $insta['target']; ?>"> <i class="fa fa-instagram fa-2x fa-fw"></i></a>
+
+					<?php endif; ?>
+	        </li>
+	      </ul>
+	    </div>
+	  </div>
+	</div>
+</footer>
 
 <?php wp_footer(); ?>
+
+<script>
+	jQuery(function($){
+	    $(document).ready(function(){
+	        var owl = $(".owl-carousel").owlCarousel({
+	            items: 1,
+					loop: true,
+	            slideSpeed: 900,
+	            pagination: true,
+					autoHeight:true,
+	            // autoplay: true,
+	            // autoplayTimeout: 3500,
+	            autoplayHoverPause: true,
+	            addClassActive: true,
+	            singleItem: true,
+	        }).data('owlCarousel');
+
+	        $('.owl-item').click(function(){
+	            owl.next();
+	        })
+
+	        setInterval(function(){
+	            owl.next();
+	        }, 6000);
+	    });
+	})
+</script>
 
 </body>
 </html>
